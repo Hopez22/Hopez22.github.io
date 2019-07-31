@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Testing Web Creation</title>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<style>
+.container { background-color: powderblue;
+  border: 2px outset;
+  padding: 10px; 
+  width: 700px;
+  resize: both;
+  
+}
+
+body  {
+  background-image: url("images/bg.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-color: #cccccc;
+}
+
+header {
+  background-color: #666;
+  padding: 20px;
+  text-align: center;
+  font-size: 35px;
+  color: white;
+}
+.hide {
+    display: none;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h2>MTN Data Generator</h2>
+</header>
+
+<div id="pages">
+    <div id="information" class="page">
+<div class="container" style="margin-top: 100px;">
+  <center>
+<img src="images/logo2.png" width="200" height="100"> </center>
+<hr>
+<center><h3 style="color: darkred; font-weight:bold">Generate Up to 5Gb FREE MTN Internet Data</h3>
+<font size="5"><b>[Top data generator tool for MTN 2019]</b></font><br> 
+<font size="4">Generate free MTN Internet data on every 24 hours for each SIM card.</font><br><br>
+</center> 
+<hr>
+     <div class="row justify-content-center">
+     
+        <div class="col-md-6 col-md-offset-3" align="center">
+     
+<form>
+    <label align="left"><b>Enter Your MTN Number:</b></label><br>
+       
+<input class="form-control" name="number" type="text" placeholder="Enter number here..."><br>
+
+<label align="left"><b>Lifespan of your SIM Card:</b></label><br>
+<select class="form-control">
+  
+  <option>====Select Years====</option>
+  <option>under 1 year</option>
+  <option>1-2 years</option>
+  <option>3-4 years</option>
+  <option>5+ years</option>
+</select><br>
+     
+     
+ <a id="portfolio-link"href="#"><button type="button" class=" btn btn-primary"><i class="fa fa-angle-double-right"></i> Continue</button> </a><br><br>      
+</form>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+ 
+    
+ <div id="portfolio" class="page hide">
+     <div class="container" style="margin-top: 100px;">
+
+<center>
+<img src="images/logo2.png" width="200" height="100"> </center>
+<hr>
+<center><h3 style="color: blue; font-weight:bold">Select amount of Data and Click Generate</h3>
+ 
+<font size="4"><b>Note:</b> Pick Data amount according to the lifespan of the SIM card</font><br><br>
+</center>
+     <div class="row justify-content-center">
+        <div class="col-md-6 col-md-offset-3" align="center">
+          
+      <form method="post" action"#">
+       <select class="form-control">
+  
+  <option>====Select Data Amount====</option>
+  <option disabled>=== under 1 year ===</option>
+  <option disabled>Data Not Available</option>
+  <option Disabled>=== 1-2 years ===</option>
+  <option>180MB</option>
+  <option>300MB</option>
+  <option>500MB</option>
+  <option>750MB</option>
+  <option disabled>=== 3-4 years ===</option>
+  <option>1GB</option>
+  <option>2.5GB</option>
+  <option>3GB</option>
+  <option>4GB</option>
+  <option disabled>=== 5+ years ===</option>
+  <option>5GB</option>  
+</select><br>
+     
+     <progress id="progressBar" value="50" max="100" style="width:250px;"></progress>
+  <span id="status">50%</span>
+  
+    
+  
+  <div style="font-size:24px;font-weight:bold" id="finalMessage">
+  </div>
+  <div style="color:red;font-size:14px" id="finalMessage2">
+  </div><br>
+    
+     <button type="button" onclick='start(0)' class="btn btn-success"><i class="fa fa-spinner fa-pulse"></i> Generate</button>  <br>
+
+ 
+</form>
+     </div>
+    </div>
+   </div>
+  </div>
+
+<script>
+function start(al) {
+  var bar = document.getElementById('progressBar');
+  var status = document.getElementById('status');
+  status.innerHTML = al + "%";
+  bar.value = al;
+  al++;
+  var sim = setTimeout("start(" + al + ")", 1);
+  if (al == 100) {
+    status.innerHTML = "100%";
+    bar.value = 100;
+    clearTimeout(sim);
+    var finalMessage = document.getElementById('finalMessage');
+    finalMessage.innerHTML = "Process is complete";
+    var finalMessage2 = document.getElementById('finalMessage2');
+    finalMessage2.innerHTML = "(check your balance)";
+  }
+}
+</script>
+
+<script>
+
+$(document).ready(function() {
+    $("#information-link").on('click', function() {
+        $("#pages .page:not('.hide')").stop().fadeOut('fast', function() {
+            $(this).addClass('hide');
+            $('#information').fadeIn('slow').removeClass('hide');
+        });
+    });
+    $("#portfolio-link").on('click', function() {
+        $("#pages .page:not('.hide')").stop().fadeOut('fast', function() {
+            $(this).addClass('hide');
+            $('#portfolio').fadeIn('slow').removeClass('hide');
+        });
+    });
+});
+
+</script>
+</body>
+</html>
